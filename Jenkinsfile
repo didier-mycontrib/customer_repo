@@ -16,8 +16,8 @@ pipeline {
 		}
 		stage('recompose docker container') {
 			steps {
-			    ws("/conf-docker/backend-customers/backend-customer-repo") {
-				     sh('./build.sh')
+			    ws("/conf-docker/backend-customers") {
+				     sh('date > lastUpdate.txt')
 				}
 			}
 		}
