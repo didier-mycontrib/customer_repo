@@ -9,14 +9,14 @@ pipeline {
 		}
 		stage('Checkout code') {
 			steps {
-			   ws("/var/jenkins_home/w1") {
+			   ws("/conf-docker/w1") {
 				  checkout scm
 			   }
 			}
 		}
 		stage('recompose docker container') {
 			steps {
-			    ws("/var/jenkins_home/w1") {
+			    ws("/conf-docker/w1") {
 				     sh('./build.sh')
 				}
 			}
