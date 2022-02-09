@@ -9,14 +9,14 @@ pipeline {
 		}
 		stage('Checkout code') {
 			steps {
-			   ws("/conf-docker/backend-customers\backend-customer-repo") {
+			   ws("/conf-docker/backend-customers/backend-customer-repo") {
 				  checkout scm
 			   }
 			}
 		}
 		stage('recompose docker container') {
 			steps {
-			    ws("/conf-docker/backend-customers\backend-customer-repo") {
+			    ws("/conf-docker/backend-customers/backend-customer-repo") {
 				     sh('./build.sh')
 				}
 			}
