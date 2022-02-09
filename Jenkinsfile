@@ -12,5 +12,10 @@ pipeline {
 				checkout scm
 			}
 		}
+		stage('recompose docker container') {
+			steps {
+				sh('./build.sh')
+			}
+		}
     }
 }
