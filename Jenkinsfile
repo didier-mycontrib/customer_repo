@@ -1,5 +1,10 @@
 pipeline {
-    agent any
+    agent {
+		node {
+			label 'my-defined-label'
+			customWorkspace '/var/jenkins_home/w1'
+		}
+	}
 
     stages {
         stage('Hello') {
