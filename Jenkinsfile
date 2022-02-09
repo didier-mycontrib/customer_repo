@@ -1,10 +1,5 @@
 pipeline {
-    agent {
-		node {
-			label 'my-defined-label'
-			customWorkspace '/var/jenkins_home/w1'
-		}
-	}
+    agent any
 
     stages {
         stage('Hello') {
@@ -14,12 +9,16 @@ pipeline {
 		}
 		stage('Checkout code') {
 			steps {
-				checkout scm
+			   ws("/var/jenkins_home/w1") {
+				  checkout scm
+			   }
 			}
 		}
 		stage('recompose docker container') {
 			steps {
-				sh('./build.sh')
+			    ws("/var/jenkins_home/w1") {
+				     sh('./build.sh')
+				}
 			}
 		}
     }
